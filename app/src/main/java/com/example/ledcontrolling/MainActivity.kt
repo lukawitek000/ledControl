@@ -10,27 +10,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.navigation.NavigationView
 
-/*class MainActivity : FragmentActivity() {
 
-    @SuppressLint("SourceLockedOrientationActivity")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        setContentView(R.layout.activity_main)
-    }
-}
-*/
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
+
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
 
         toolbar = findViewById(R.id.toolbar)
@@ -48,12 +43,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        var fragment: Fragment = WelcomeFragment()
+        var fragmentManager: FragmentManager = supportFragmentManager
         when (item.itemId) {
-            R.id.nav_profile -> {
+            R.id.nav_home -> {
                 Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+                fragment = WelcomeFragment()
             }
-            R.id.nav_messages -> {
+            R.id.nav_color_fill -> {
                 Toast.makeText(this, "Messages clicked", Toast.LENGTH_SHORT).show()
+                fragment = ColorPickerFragment()
             }
             R.id.nav_update -> {
                 Toast.makeText(this, "Update clicked", Toast.LENGTH_SHORT).show()
@@ -63,6 +62,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
+        fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit()
+
+
         return true
     }
 }

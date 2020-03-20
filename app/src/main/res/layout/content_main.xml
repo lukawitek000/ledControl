@@ -38,13 +38,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <fragment android:name="com.example.ledcontrolling.ColorPickerFragment"
-            android:id="@+id/color_picker_fragment"
+        <fragment android:name="com.example.ledcontrolling.WelcomeFragment"
+            android:id="@+id/welcome_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
 
 </LinearLayout>
+
+<!--<fragment android:name="com.example.ledcontrolling.ColorPickerFragment"
+android:id="@+id/color_picker_fragment"
+android:layout_width="match_parent"
+android:layout_height="match_parent"/>-->
+
     <!-- <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
