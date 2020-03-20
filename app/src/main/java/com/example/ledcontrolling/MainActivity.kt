@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
+    lateinit var fragment: Fragment
+    lateinit var fragmentManager: FragmentManager
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
+        fragment = WelcomeFragment()
+        fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit()
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0, 0
@@ -43,8 +48,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var fragment: Fragment = WelcomeFragment()
-        var fragmentManager: FragmentManager = supportFragmentManager
+
         when (item.itemId) {
             R.id.nav_home -> {
                 Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
