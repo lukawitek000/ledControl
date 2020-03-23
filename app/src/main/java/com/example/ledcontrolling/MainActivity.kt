@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var fragment: Fragment
-    lateinit var fragmentManager: FragmentManager
+    private lateinit var fragmentManager: FragmentManager
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
