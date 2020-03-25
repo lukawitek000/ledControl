@@ -44,15 +44,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView = findViewById(R.id.nav_view)
 
         navController = findNavController(R.id.nav_host_fragment)
-       /* fragment = WelcomeFragment()
-        fragmentManager = supportFragmentManager
-        fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit()
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0, 0
         )
         drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()*/
+        toggle.syncState()
+
         navView.setNavigationItemSelectedListener(this)
     }
 
@@ -61,25 +59,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
        when (item.itemId) {
             R.id.nav_home -> {
                 Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
-               // Navigation.setViewNavController(R.id.welcomeFragment, navController)
                 navController?.navigate(R.id.welcomeFragment)
             }
             R.id.nav_color_fill -> {
                 Toast.makeText(this, "Messages clicked", Toast.LENGTH_SHORT).show()
                 navController?.navigate(R.id.colorPickerFragment)
-               // fragment = ColorPickerFragment()
-            }/*
-            R.id.nav_update -> {
-                Toast.makeText(this, "Update clicked", Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_logout -> {
-                Toast.makeText(this, "Sign out clicked", Toast.LENGTH_SHORT).show()
-            }*/
         }
-        //drawerLayout.closeDrawer(GravityCompat.START)
-        //fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit()
-
-
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 }
