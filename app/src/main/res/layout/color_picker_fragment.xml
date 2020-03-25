@@ -4,9 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -50,30 +47,33 @@
             android:id="@+id/send_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/send_button"
             app:layout_constraintBottom_toTopOf="@+id/colorWheel"
             app:layout_constraintEnd_toStartOf="@+id/wave_switch"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <Switch
             android:id="@+id/solidColor_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:checked="true"
             android:text="solid Color"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/wave_switch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/send_button" />
 
         <Switch
             android:id="@+id/wave_switch"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="wave"
@@ -84,15 +84,16 @@
 
         <Switch
             android:id="@+id/flashing_switch"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="flashing"
             app:layout_constraintBottom_toBottomOf="@+id/send_button"
             app:layout_constraintEnd_toEndOf="@+id/wave_switch"
-            app:layout_constraintStart_toStartOf="@+id/wave_switch" />
-        <!--android:background="@drawable/button_send_shape"-->
+            app:layout_constraintStart_toStartOf="@+id/wave_switch"
+            app:layout_constraintTop_toBottomOf="@+id/wave_switch" />
 
+        <!--android:background="@drawable/button_send_shape"-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,16 +26,10 @@ class SettingsFragment : Fragment(){
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
 
-
         createAlertDialog()
-
         binding.submitButton.setOnClickListener{
-           // ConnectTask.port = binding.inputPort.toString().toInt()
-           // ConnectTask.host = binding.inputIDaddress.toString()
             alertDialog.show()
         }
-
-
         return binding.root
     }
 
@@ -44,7 +38,7 @@ class SettingsFragment : Fragment(){
         alertDialog.apply {
             setTitle("Are you sure to change settings?")
             setMessage("It can disconnect phone with server")
-            setPositiveButton("Yes"){dialog, which->
+            setPositiveButton("Yes"){_, _->
                 ConnectTask.port = binding.inputPort.text.toString().toInt()
                 ConnectTask.host = binding.inputIDaddress.text.toString()
                 Toast.makeText(activity, "OK settings are changed", Toast.LENGTH_SHORT).show()
