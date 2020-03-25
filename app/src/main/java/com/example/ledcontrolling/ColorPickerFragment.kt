@@ -21,13 +21,13 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
     private lateinit var sendButton: Button
     private lateinit var gradientSeekBarDark: GradientSeekBar
     private lateinit var gradientSeekBarLight: GradientSeekBar
-
+    private lateinit var binding: ColorPickerFragmentBinding
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle? ): View? {
         //val view = inflater.inflate(R.layout.color_picker_fragment, container, false)
 
-        val binding = DataBindingUtil.inflate<ColorPickerFragmentBinding>(inflater, R.layout.color_picker_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.color_picker_fragment, container, false)
 
 
         colorWheel = binding.colorWheel
