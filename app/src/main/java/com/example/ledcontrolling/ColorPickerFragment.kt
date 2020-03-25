@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.apandroid.colorwheel.ColorWheel
 import com.apandroid.colorwheel.gradientseekbar.GradientSeekBar
+import com.example.ledcontrolling.databinding.ColorPickerFragmentBinding
 
 class ColorPickerFragment : Fragment(), AsyncResponse{
 
@@ -23,12 +25,22 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle? ): View? {
-        val view = inflater.inflate(R.layout.color_picker_fragment, container, false)
-        colorWheel = view.findViewById<ColorWheel>(R.id.colorWheel)
+        //val view = inflater.inflate(R.layout.color_picker_fragment, container, false)
+
+        val binding = DataBindingUtil.inflate<ColorPickerFragmentBinding>(inflater, R.layout.color_picker_fragment, container, false)
+
+
+        colorWheel = binding.colorWheel
+        sendButton = binding.sendButton
+        gradientSeekBarDark = binding.gradientSeekBarDark
+        gradientSeekBarLight = binding.gradientSeekBarLight
+
+
+        /*colorWheel = view.findViewById<ColorWheel>(R.id.colorWheel)
         sendButton = view.findViewById<Button>(R.id.send_button)
         gradientSeekBarDark = view.findViewById<GradientSeekBar>(R.id.gradientSeekBar_dark)
         gradientSeekBarLight = view.findViewById<GradientSeekBar>(R.id.gradientSeekBar_light)
-
+*/
         createGradientSeekBars()
         listenForColorChanging()
         sendButton.setOnClickListener {
@@ -38,7 +50,8 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
             Toast.makeText(activity, hex, Toast.LENGTH_SHORT).show()
             //connect.execute(hex)
         }
-        return view
+        //return view
+        return binding.root
     }
 
     private fun listenForColorChanging() {
