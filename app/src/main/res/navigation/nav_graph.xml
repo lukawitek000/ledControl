@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_welcomeFragment_to_colorPickerFragment"
             app:destination="@id/colorPickerFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/colorPickerFragment"
         android:name="com.example.ledcontrolling.ColorPickerFragment"
         android:label="ColorPickerFragment"
         tools:layout="@layout/color_picker_fragment"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.ledcontrolling.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/settings_fragment"/>
 </navigation>
