@@ -7,7 +7,11 @@ import java.lang.Exception
 import java.net.InetAddress
 
 class ConnectTask() : AsyncTask<String, Void, String>() {
-    private val client = TcpClient(InetAddress.getByName("192.168.0.103"), 10000   )
+    companion object {
+        var host= "192.168.0.103"
+        var port = 10000
+        private val client = TcpClient(InetAddress.getByName(host), port)
+    }
 
     var delegate: AsyncResponse? = null
 
