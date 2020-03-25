@@ -1,5 +1,7 @@
 package com.example.ledcontrolling
 
+import android.animation.ObjectAnimator
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +31,12 @@ class WelcomeFragment : Fragment(){
         binding.goToSettingsButton.setOnClickListener{
             binding.root.findNavController().navigate(R.id.action_welcomeFragment_to_settingsFragment)
         }
+
+        binding.textView.setShadowLayer(20f, 0f, 0f, Color.RED)
+        binding.goToSettingsButton.setShadowLayer(10f, 2f, -2f, Color.rgb(241, 102, 52))
+
+        binding.goToLedButton.setShadowLayer(10f, 2f, -2f, Color.rgb(241, 102, 52))
+
 
         return binding.root
     }
