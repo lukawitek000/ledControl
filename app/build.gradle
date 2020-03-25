@@ -6,6 +6,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+
     defaultConfig {
         applicationId "com.example.ledcontrolling"
         minSdkVersion 19
@@ -23,6 +24,11 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
+
 }
 
 dependencies {
@@ -35,6 +41,15 @@ dependencies {
     implementation 'com.apandroid:colorwheel:1.0.5'
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
+    implementation 'com.google.android.material:material:1.0.0'
+
+    def nav_version = "2.3.0-alpha04"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    // Dynamic Feature Module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
