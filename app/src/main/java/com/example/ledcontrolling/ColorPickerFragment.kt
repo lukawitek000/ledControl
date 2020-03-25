@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -26,15 +27,55 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
 
         createGradientSeekBars()
         listenForColorChanging()
+        listenToSwitches()
         binding.sendButton.setOnClickListener {
             var connect: ConnectTask = ConnectTask()
             connect.delegate = this
             var hex: String = Integer.toHexString(color).substring(2, 8)
+            hex += selectMode(hex)
             Toast.makeText(activity, hex, Toast.LENGTH_SHORT).show()
             //connect.execute(hex)
         }
         return binding.root
     }
+
+    private fun listenToSwitches() {
+
+
+
+        binding.apply {
+            solidColorSwitch.setOnCheckedChangeListener{ _, isChecked ->
+                if(isChecked){
+                    flashingSwitch.isChecked = false
+                    waveSwitch.isChecked = false
+                }
+            }
+            flashingSwitch.setOnCheckedChangeListener{ _, isChecked ->
+                if(isChecked){
+                    solidColorSwitch.isChecked = false
+                    waveSwitch.isChecked = false
+                }
+            }
+            waveSwitch.setOnCheckedChangeListener{ _, isChecked ->
+                if(isChecked){
+                    flashingSwitch.isChecked = false
+                    solidColorSwitch.isChecked = false
+                }
+            }
+
+
+        }
+    }
+
+    private fun selectMode(hex: String): String {
+        if(binding.solidColorSwitch.isChecked){
+            return "s"
+        }else if(binding.flashingSwitch.isChecked){
+            return "f"
+        }
+        return "w"
+    }
+
 
     private fun listenForColorChanging() {
         binding.colorWheel.colorChangeListener = { rgb: Int ->
