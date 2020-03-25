@@ -44,8 +44,8 @@ class SettingsFragment : Fragment(){
                 Toast.makeText(activity, "OK settings are changed", Toast.LENGTH_SHORT).show()
             }
             setNegativeButton("CANCEL"){_, _ ->
-                binding.inputIDaddress.hint = ConnectTask.host
-                binding.inputPort.hint = ConnectTask.port.toString()
+                binding.inputIDaddress.setText(ConnectTask.host)
+                binding.inputPort.setText(ConnectTask.port.toString())
             }
         }
     }

@@ -4,20 +4,20 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
-            android:title="Profile"/>
+            android:title="@string/home" />
         <item
             android:id="@+id/nav_color_fill"
             android:icon="@drawable/ic_color_fill"
-            android:title="Single Color"/>
+            android:title="@string/ledButton" />
     </group>
 
 
-    <item android:title="Settings">
+    <item android:title="@string/Settings_name">
         <menu>
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings"
-                android:title="Settings"/>
+                android:title="Settings" />
         </menu>
     </item>
 </menu>
