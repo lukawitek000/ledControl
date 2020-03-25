@@ -17,10 +17,6 @@ import com.example.ledcontrolling.databinding.ColorPickerFragmentBinding
 class ColorPickerFragment : Fragment(), AsyncResponse{
 
     private var color: Int = Color.BLACK
-    //private lateinit var colorWheel: ColorWheel
-   // private lateinit var sendButton: Button
-    //private lateinit var gradientSeekBarDark: GradientSeekBar
-    //private lateinit var gradientSeekBarLight: GradientSeekBar
     private lateinit var binding: ColorPickerFragmentBinding
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,

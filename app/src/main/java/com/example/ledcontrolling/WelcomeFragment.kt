@@ -21,17 +21,10 @@ class WelcomeFragment : Fragment(){
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.welcome_fragment, container, false)
 
-        //val view = inflater.inflate(R.layout.welcome_fragment, container, false)
-        //val button = view.findViewById<Button>(R.id.button)
-       // val button = binding.button
-
-
-
         binding.button.setOnClickListener{
             binding.root.findNavController().navigate(R.id.action_welcomeFragment_to_colorPickerFragment)
 
         }
-
 
         return binding.root
     }

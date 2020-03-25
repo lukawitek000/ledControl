@@ -21,12 +21,9 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
-    lateinit var fragment: Fragment
-    private lateinit var fragmentManager: FragmentManager
 
     private lateinit var navController: NavController
 
@@ -59,11 +56,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
        when (item.itemId) {
             R.id.nav_home -> {
                 Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
-                navController?.navigate(R.id.welcomeFragment)
+                navController.navigate(R.id.welcomeFragment)
             }
             R.id.nav_color_fill -> {
                 Toast.makeText(this, "Messages clicked", Toast.LENGTH_SHORT).show()
-                navController?.navigate(R.id.colorPickerFragment)
+                navController.navigate(R.id.colorPickerFragment)
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
