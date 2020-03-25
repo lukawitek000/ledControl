@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         drawerLayout = findViewById(R.id.drawer_layout)
-        navView = findViewById(R.id.nav_view)
+       /* navView = findViewById(R.id.nav_view)
         fragment = WelcomeFragment()
         fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit()
@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        navView.setNavigationItemSelectedListener(this)
+        navView.setNavigationItemSelectedListener(this)*/
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-        when (item.itemId) {
+       /* when (item.itemId) {
             R.id.nav_home -> {
                 Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
                 fragment = WelcomeFragment()
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         fragmentManager.beginTransaction().replace(R.id.placeholder, fragment).commit()
-
+*/
 
         return true
     }
