@@ -49,21 +49,35 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
                     flashingSwitch.isChecked = false
                     waveSwitch.isChecked = false
                 }
+                checkIfThereIsOneSwitchOn()
             }
             flashingSwitch.setOnCheckedChangeListener{ _, isChecked ->
                 if(isChecked){
                     solidColorSwitch.isChecked = false
                     waveSwitch.isChecked = false
                 }
+                checkIfThereIsOneSwitchOn()
             }
             waveSwitch.setOnCheckedChangeListener{ _, isChecked ->
                 if(isChecked){
                     flashingSwitch.isChecked = false
                     solidColorSwitch.isChecked = false
                 }
+                checkIfThereIsOneSwitchOn()
             }
+            /*if(!(solidColorSwitch.isChecked || flashingSwitch.isChecked || waveSwitch.isChecked)){
+                solidColorSwitch.isChecked = true
+            }
+*/
 
+        }
+    }
 
+    private fun checkIfThereIsOneSwitchOn() {
+        binding.apply {
+            if (!(solidColorSwitch.isChecked || flashingSwitch.isChecked || waveSwitch.isChecked)) {
+                solidColorSwitch.isChecked = true
+            }
         }
     }
 
