@@ -12,16 +12,12 @@
     </group>
 
 
-    <item android:title="Account Settings">
+    <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/nav_update"
-                android:icon="@drawable/ic_update"
-                android:title="Update Profile"/>
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_signout"
-                android:title="Sign Out"/>
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings"/>
         </menu>
     </item>
 </menu>

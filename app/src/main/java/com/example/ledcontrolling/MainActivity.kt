@@ -55,13 +55,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
        when (item.itemId) {
             R.id.nav_home -> {
-                Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Home Screen", Toast.LENGTH_SHORT).show()
                 navController.navigate(R.id.welcomeFragment)
             }
             R.id.nav_color_fill -> {
-                Toast.makeText(this, "Messages clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Color Picker", Toast.LENGTH_SHORT).show()
                 navController.navigate(R.id.colorPickerFragment)
             }
+           R.id.nav_settings -> {
+               Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
+               navController.navigate(R.id.settingsFragment)
+           }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
