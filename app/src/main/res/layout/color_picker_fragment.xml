@@ -7,6 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/wall"
         >
 
 
@@ -27,6 +28,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal"
+
             app:layout_constraintBottom_toBottomOf="@+id/colorWheel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/colorWheel"
@@ -52,6 +54,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:background="@drawable/button_send_shape"
+            android:textColor="#FFFFFF"
             android:text="@string/send_button"
             app:layout_constraintBottom_toTopOf="@+id/colorWheel"
             app:layout_constraintEnd_toStartOf="@+id/wave_switch"
@@ -66,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:checked="true"
+            android:textColor="#FFFFFF"
             android:text="@string/solidColor_switch"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/wave_switch"
@@ -76,6 +81,7 @@
             android:id="@+id/wave_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:checked="false"
             android:text="@string/wave_switch"
             app:layout_constraintBottom_toTopOf="@+id/flashing_switch"
@@ -87,6 +93,7 @@
             android:id="@+id/flashing_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:checked="false"
             android:text="@string/flashing_switch"
             app:layout_constraintBottom_toBottomOf="@+id/send_button"
@@ -100,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/led_mode"
+            android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/solidColor_switch"

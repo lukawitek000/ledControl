@@ -2,6 +2,11 @@ package com.example.ledcontrolling
 
 
 import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CompoundButton
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.apandroid.colorwheel.ColorWheel
@@ -28,6 +34,10 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
         createGradientSeekBars()
         listenForColorChanging()
         listenToSwitches()
+
+
+
+
         binding.sendButton.setOnClickListener {
             var connect: ConnectTask = ConnectTask()
             connect.delegate = this
@@ -95,7 +105,30 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
     private fun listenForColorChanging() {
         binding.colorWheel.colorChangeListener = { rgb: Int ->
             binding.apply {
-                sendButton.setBackgroundColor(rgb)
+
+
+                if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                   // val grad : ColorDrawable = sendButton.background as ColorDrawable
+                    //grad.color = color
+
+
+                   /* val myDrawable = ContextCompat.getDrawable(activity!!.applicationContext, R.drawable.button_send_shape)
+                    myDrawable?.colorFilter = (PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN))
+*/
+ //                   Toast.makeText(activity, "inside lollipop", Toast.LENGTH_SHORT).show()
+
+                    //setCompoundDrawablesWithIntrinsicBounds(myDrawable, null, null, null)
+                }else{
+                    sendButton.setBackgroundColor(rgb)
+                }
+
+
+                /*
+                    for api greater than 21
+
+
+
+                 */
                 gradientSeekBarDark.endColor = rgb
                 gradientSeekBarLight.startColor = rgb
             }
