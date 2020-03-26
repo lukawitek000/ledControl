@@ -14,4 +14,6 @@
     <string name="default_port">10000</string>
     <string name="default_IP">192.168.0.103</string>
     <string name="toolbar_title">Smart Room</string>
+    <string name="select_language">Select language</string>
+    <string name="submit_button_text">Submit</string>
 </resources>
