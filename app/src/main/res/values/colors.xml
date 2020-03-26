@@ -7,4 +7,6 @@
     <color name="text_on_button_in_home_screen">#FF0000</color>
     <color name="dark_grey">#090909</color>
     <color name="red">#FF0000</color>
+    <color name="orange">#FFA600</color>
+    <color name="dark_red">#8E0000</color>
 </resources>
