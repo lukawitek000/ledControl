@@ -16,4 +16,5 @@
     <string name="toolbar_title">Smart Room</string>
     <string name="select_language">Select language</string>
     <string name="submit_button_text">Submit</string>
+    <string name="selected_color">Selected color</string>
 </resources>

@@ -1,118 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/wall"
+        android:background="@color/background"
+
         >
 
 
-        <com.apandroid.colorwheel.ColorWheel
-            android:id="@+id/colorWheel"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/color_pick_layout"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/gradientSeekBar_dark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.apandroid.colorwheel.gradientseekbar.GradientSeekBar
-            android:id="@+id/gradientSeekBar_dark"
-            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-
-            app:layout_constraintBottom_toBottomOf="@+id/colorWheel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/colorWheel"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <com.apandroid.colorwheel.gradientseekbar.GradientSeekBar
-            android:id="@+id/gradientSeekBar_light"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:rotation="0"
-            app:asb_orientation="horizontal"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/settings_server_section"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/colorWheel"
-            app:layout_constraintStart_toStartOf="@+id/colorWheel"
-            app:layout_constraintTop_toBottomOf="@+id/colorWheel" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/led_mode_layout"
+            app:layout_constraintVertical_bias="0.0">
+
+
+            <com.apandroid.colorwheel.ColorWheel
+                android:id="@+id/colorWheel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/gradientSeekBar_light"
+                app:layout_constraintEnd_toStartOf="@+id/gradientSeekBar_dark"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.apandroid.colorwheel.gradientseekbar.GradientSeekBar
+                android:id="@+id/gradientSeekBar_light"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                android:rotation="0"
+                app:asb_orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/colorWheel"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/colorWheel" />
+
+            <com.apandroid.colorwheel.gradientseekbar.GradientSeekBar
+                android:id="@+id/gradientSeekBar_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/colorWheel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/colorWheel"
+                app:layout_constraintTop_toTopOf="@+id/colorWheel" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/send_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_send_shape"
-            android:textColor="#FFFFFF"
             android:text="@string/send_button"
-            app:layout_constraintBottom_toTopOf="@+id/colorWheel"
-            app:layout_constraintEnd_toStartOf="@+id/wave_switch"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/color_pick_layout"
+            app:layout_constraintEnd_toStartOf="@+id/led_mode_layout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@+id/led_mode_layout" />
 
-        <Switch
-            android:id="@+id/solidColor_switch"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/led_mode_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:checked="true"
-            android:textColor="#FFFFFF"
-            android:text="@string/solidColor_switch"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/wave_switch"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mode_text" />
+            android:layout_marginTop="16dp"
+            android:background="@drawable/settings_server_section"
+            app:layout_constraintEnd_toEndOf="@+id/color_pick_layout"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Switch
-            android:id="@+id/wave_switch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:checked="false"
-            android:text="@string/wave_switch"
-            app:layout_constraintBottom_toTopOf="@+id/flashing_switch"
-            app:layout_constraintEnd_toEndOf="@+id/solidColor_switch"
-            app:layout_constraintStart_toStartOf="@+id/solidColor_switch"
-            app:layout_constraintTop_toBottomOf="@+id/solidColor_switch" />
+            <Switch
+                android:id="@+id/solidColor_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:checked="true"
+                android:text="@string/solidColor_switch"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/wave_switch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mode_text" />
 
-        <Switch
-            android:id="@+id/flashing_switch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:checked="false"
-            android:text="@string/flashing_switch"
-            app:layout_constraintBottom_toBottomOf="@+id/send_button"
-            app:layout_constraintEnd_toEndOf="@+id/wave_switch"
-            app:layout_constraintStart_toStartOf="@+id/wave_switch"
-            app:layout_constraintTop_toBottomOf="@+id/wave_switch" />
+            <Switch
+                android:id="@+id/wave_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/wave_switch"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/flashing_switch"
+                app:layout_constraintEnd_toEndOf="@+id/solidColor_switch"
+                app:layout_constraintStart_toStartOf="@+id/solidColor_switch"
+                app:layout_constraintTop_toBottomOf="@+id/solidColor_switch" />
 
-        <TextView
-            android:id="@+id/mode_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/led_mode"
-            android:textColor="#FFFFFF"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/solidColor_switch"
-            app:layout_constraintStart_toStartOf="@+id/solidColor_switch"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Switch
+                android:id="@+id/flashing_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:checked="false"
+                android:text="@string/flashing_switch"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/wave_switch"
+                app:layout_constraintStart_toStartOf="@+id/wave_switch"
+                app:layout_constraintTop_toBottomOf="@+id/wave_switch" />
+
+            <TextView
+                android:id="@+id/mode_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/led_mode"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/solidColor_switch"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/solidColor_switch"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <!--android:background="@drawable/button_send_shape"-->
 

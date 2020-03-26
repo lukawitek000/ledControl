@@ -9,4 +9,5 @@
     <color name="red">#FF0000</color>
     <color name="orange">#FFA600</color>
     <color name="dark_red">#8E0000</color>
+    <color name="background">#000000</color>
 </resources>

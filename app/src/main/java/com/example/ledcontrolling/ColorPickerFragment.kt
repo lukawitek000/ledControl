@@ -1,6 +1,7 @@
 package com.example.ledcontrolling
 
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.ColorFilter
 import android.graphics.PorterDuff
@@ -34,9 +35,6 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
         createGradientSeekBars()
         listenForColorChanging()
         listenToSwitches()
-
-
-
 
         binding.sendButton.setOnClickListener {
             var connect: ConnectTask = ConnectTask()
@@ -105,30 +103,8 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
     private fun listenForColorChanging() {
         binding.colorWheel.colorChangeListener = { rgb: Int ->
             binding.apply {
-
-
-                if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
-                   // val grad : ColorDrawable = sendButton.background as ColorDrawable
-                    //grad.color = color
-
-
-                   /* val myDrawable = ContextCompat.getDrawable(activity!!.applicationContext, R.drawable.button_send_shape)
-                    myDrawable?.colorFilter = (PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN))
-*/
- //                   Toast.makeText(activity, "inside lollipop", Toast.LENGTH_SHORT).show()
-
-                    //setCompoundDrawablesWithIntrinsicBounds(myDrawable, null, null, null)
-                }else{
-                    sendButton.setBackgroundColor(rgb)
-                }
-
-
-                /*
-                    for api greater than 21
-
-
-
-                 */
+                //sendButton.setBackgroundColor(rgb)
+                binding.root.setBackgroundColor(rgb)
                 gradientSeekBarDark.endColor = rgb
                 gradientSeekBarLight.startColor = rgb
             }
@@ -136,11 +112,13 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
         }
 
         binding.gradientSeekBarDark.listener = { _: Float, rgb: Int ->
-            binding.sendButton.setBackgroundColor(rgb)
+            //binding.sendButton.setBackgroundColor(rgb)
+            binding.root.setBackgroundColor(rgb)
             color = rgb
         }
         binding.gradientSeekBarLight.listener = { _: Float, rgb: Int ->
-            binding.sendButton.setBackgroundColor(rgb)
+            //binding.sendButton.setBackgroundColor(rgb)
+            binding.root.setBackgroundColor(rgb)
             color = rgb
         }
     }
