@@ -42,7 +42,7 @@ class SettingsFragment : Fragment(){
             alertDialog.show()
         }
 
-        binding.selectPolishButton.setOnClickListener{
+       /* binding.selectPolishButton.setOnClickListener{
             if(language != POLISH) {
                 language = POLISH
                 setLanguage()
@@ -54,14 +54,14 @@ class SettingsFragment : Fragment(){
                 language = ENGLISH
                 setLanguage()
             }
-        }
+        }*/
 
 
 
         return binding.root
     }
 
-    @Suppress("DEPRECATION")
+   /* @Suppress("DEPRECATION")
     private fun setLanguage() {
         val locale = Locale(language)
         Locale.setDefault(locale)
@@ -71,7 +71,7 @@ class SettingsFragment : Fragment(){
         val intent = Intent(activity, MainActivity::class.java)
         ProcessPhoenix.triggerRebirth(activity, intent)
         //binding.root.findNavController().navigate(R.id.action_settingsFragment_to_welcomeFragment)
-    }
+    }*/
 
     private fun createAlertDialog() {
         alertDialog = AlertDialog.Builder(activity)
