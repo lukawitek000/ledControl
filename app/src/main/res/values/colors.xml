@@ -12,4 +12,5 @@
     <color name="background">#000000</color>
     <color name="dark_orange">#FF5733</color>
     <color name="grey">#1e1e1e</color>
+    <color name="shadow_of_buttons_in_welcome_screen">#F16634</color>
 </resources>

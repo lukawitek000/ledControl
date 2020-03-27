@@ -23,11 +23,7 @@ import kotlinx.android.synthetic.main.settings_fragment.view.*
 import java.util.*
 
 class SettingsFragment : Fragment(){
-
-
     private lateinit var binding: SettingsFragmentBinding
-   // private lateinit var alertDialog: AlertDialog.Builder
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +31,6 @@ class SettingsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
-
 
         binding.submitButton.setOnClickListener{
             createAlertDialog()
@@ -46,6 +41,7 @@ class SettingsFragment : Fragment(){
            if(Paper.book().read<String>("language") != "pl") {
                Paper.book().write("language", "pl")
                (activity as MainActivity).updateView(Paper.book().read<String>("language"))
+               Toast.makeText(activity, resources.getString(R.string.language_changed), Toast.LENGTH_SHORT).show()
            }
         }
 
@@ -53,10 +49,9 @@ class SettingsFragment : Fragment(){
             if(Paper.book().read<String>("language") != "en"){
                 Paper.book().write("language", "en")
                 (activity as MainActivity).updateView(Paper.book().read<String>("language"))
+                Toast.makeText(activity, resources.getString(R.string.language_changed), Toast.LENGTH_SHORT).show()
             }
         }
-
-
 
         return binding.root
     }
@@ -74,14 +69,14 @@ class SettingsFragment : Fragment(){
         okButton.setOnClickListener{
             ConnectTask.port = binding.inputPort.text.toString().toInt()
             ConnectTask.host = binding.inputIDaddress.text.toString()
-            Toast.makeText(activity, "OK settings are changed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, resources.getString(R.string.setting_changes), Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
 
         cancelButton.setOnClickListener{
             binding.inputIDaddress.setText(ConnectTask.host)
             binding.inputPort.setText(ConnectTask.port.toString())
-            Toast.makeText(activity, "Cnacel", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, resources.getString(R.string.cancel_text), Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

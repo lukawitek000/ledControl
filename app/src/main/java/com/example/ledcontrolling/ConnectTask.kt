@@ -29,12 +29,7 @@ class ConnectTask() : AsyncTask<String, Void, String>() {
         }
         return null
     }
-    /*
-        override fun onPreExecute() {
-            super.onPreExecute()
-            // ...
-        }
-    */
+
     override fun onPostExecute(result: String?) {
         super.onPostExecute(result)
         delegate?.processFinish(result)

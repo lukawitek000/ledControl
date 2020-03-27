@@ -1,25 +1,15 @@
 package com.example.ledcontrolling
 
 
-import android.content.res.ColorStateList
+
 import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.apandroid.colorwheel.ColorWheel
-import com.apandroid.colorwheel.gradientseekbar.GradientSeekBar
 import com.example.ledcontrolling.databinding.ColorPickerFragmentBinding
 
 class ColorPickerFragment : Fragment(), AsyncResponse{
@@ -37,21 +27,18 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
         listenToSwitches()
 
         binding.sendButton.setOnClickListener {
-            var connect: ConnectTask = ConnectTask()
+            val connect = ConnectTask()
             connect.delegate = this
             var hex: String = Integer.toHexString(color).substring(2, 8)
-            hex += selectMode(hex)
+            hex += selectMode()
             // s - solid color, w - wave, f - flashing, at the end of the hex
-            Toast.makeText(activity, hex, Toast.LENGTH_SHORT).show()
+            //Toast.makeText(activity, hex, Toast.LENGTH_SHORT).show()
             //connect.execute(hex)
         }
         return binding.root
     }
 
     private fun listenToSwitches() {
-
-
-
         binding.apply {
             solidColorSwitch.setOnCheckedChangeListener{ _, isChecked ->
                 if(isChecked){
@@ -74,10 +61,6 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
                 }
                 checkIfThereIsOneSwitchOn()
             }
-            /*if(!(solidColorSwitch.isChecked || flashingSwitch.isChecked || waveSwitch.isChecked)){
-                solidColorSwitch.isChecked = true
-            }
-*/
 
         }
     }
@@ -90,7 +73,7 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
         }
     }
 
-    private fun selectMode(hex: String): String {
+    private fun selectMode(): String {
         if(binding.solidColorSwitch.isChecked){
             return "s"
         }else if(binding.flashingSwitch.isChecked){
@@ -124,8 +107,8 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
     }
 
     private fun createGradientSeekBars() {
-        val startColor = Color.rgb(0, 0, 0)
-        val endColor = Color.rgb(255, 255, 255)
+        val startColor = Color.BLACK
+        val endColor = Color.WHITE
         binding.apply {
             gradientSeekBarDark.startColor = startColor
             gradientSeekBarDark.endColor = endColor
@@ -140,7 +123,9 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
 
     override fun processFinish(value: String?) {
         if(value == "error") {
-            Toast.makeText(activity, "Cannot connect to the server", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, resources.getString(R.string.connection_failure), Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(activity, resources.getString(R.string.connection_successful), Toast.LENGTH_SHORT).show()
         }
     }
 }

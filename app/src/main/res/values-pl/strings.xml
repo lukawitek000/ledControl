@@ -23,4 +23,9 @@
     <string name="dialog_accept_text">TAK</string>
     <string name="dialog_cancel_text">NIE</string>
     <string name="made_by_text">Made by Łukasz Witkowski</string>
+    <string name="cancel_text">Anulowane</string>
+    <string name="setting_changes">Ustawienia zmienione</string>
+    <string name="connection_failure">Nieudane połączenie</string>
+    <string name="connection_successful">Udane połączenie</string>
+    <string name="language_changed">Język zmieniony</string>
 </resources>
