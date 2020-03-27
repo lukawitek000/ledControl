@@ -17,4 +17,8 @@
     <string name="select_language">Select language</string>
     <string name="submit_button_text">Submit</string>
     <string name="selected_color">Selected color</string>
+    <string name="dialog_title">Warning</string>
+    <string name="dialog_description">Do you want to change server settings? \n It can disconnect phone with server</string>
+    <string name="dialog_accept_text">YES</string>
+    <string name="dialog_cancel_text">NO</string>
 </resources>
