@@ -18,7 +18,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ledcontrolling.databinding.SettingsFragmentBinding
-import com.jakewharton.processphoenix.ProcessPhoenix
+import io.paperdb.Paper
 import kotlinx.android.synthetic.main.settings_fragment.view.*
 import java.util.*
 
@@ -28,12 +28,6 @@ class SettingsFragment : Fragment(){
     private lateinit var binding: SettingsFragmentBinding
    // private lateinit var alertDialog: AlertDialog.Builder
 
-    companion object{
-        const val POLISH  ="pl"
-        const val ENGLISH  ="en"
-         var language = ENGLISH
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,36 +42,25 @@ class SettingsFragment : Fragment(){
 
         }
 
-       /* binding.selectPolishButton.setOnClickListener{
-            if(language != POLISH) {
-                language = POLISH
-                setLanguage()
-            }
+       binding.selectPolishButton.setOnClickListener{
+           if(Paper.book().read<String>("language") != "pl") {
+               Paper.book().write("language", "pl")
+               (activity as MainActivity).updateView(Paper.book().read<String>("language"))
+           }
         }
 
         binding.selectEnglishButton.setOnClickListener{
-            if(language != ENGLISH) {
-                language = ENGLISH
-                setLanguage()
+            if(Paper.book().read<String>("language") != "en"){
+                Paper.book().write("language", "en")
+                (activity as MainActivity).updateView(Paper.book().read<String>("language"))
             }
-        }*/
+        }
 
 
 
         return binding.root
     }
 
-   /* @Suppress("DEPRECATION")
-    private fun setLanguage() {
-        val locale = Locale(language)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-        val intent = Intent(activity, MainActivity::class.java)
-        ProcessPhoenix.triggerRebirth(activity, intent)
-        //binding.root.findNavController().navigate(R.id.action_settingsFragment_to_welcomeFragment)
-    }*/
 
     private fun createAlertDialog() {
 

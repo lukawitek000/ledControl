@@ -3,25 +3,27 @@ package com.example.ledcontrolling
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
+import android.util.DisplayMetrics
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentController
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.example.ledcontrolling.Helper.LocaleHelper
 import com.google.android.material.navigation.NavigationView
-import com.jakewharton.processphoenix.ProcessPhoenix
+import io.paperdb.Paper
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -57,6 +59,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+        
+        
+        
+        Paper.init(this)
+        val language : String? = Paper.book().read("language")
+        if(language == null){
+            Paper.book().write("language", "en")
+        }
+        updateView(Paper.book().read<String>("language"))
+
+        
+    }
+
+    fun updateView(lang: String?) {
+        val context : Context? = LocaleHelper.setLocale(this, lang)
+        val resources : Resources = context!!.resources
+        navView.menu.apply {
+            findItem(R.id.nav_settings).title = resources.getString(R.string.Settings_name)
+            findItem(R.id.nav_home).title = resources.getString(R.string.home)
+            findItem(R.id.nav_color_fill).title = resources.getString(R.string.ledButton)
+        }
+        navController.navigate(R.id.welcomeFragment)
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -79,4 +104,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase, "en"))
+    }
 }

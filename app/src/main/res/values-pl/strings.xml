@@ -2,14 +2,14 @@
 <resources>
     <string name="app_name">LedControlling</string>
     <string name="send_button">Wyślij</string>
-    <string name="welcome_text">WITAJ!!!</string>
+    <string name="welcome_text">Witaj!!!</string>
     <string name="ledButton">LED</string>
     <string name="Settings_name">Ustawienia</string>
-    <string name="solidColor_switch">Stały kolor</string>
+    <string name="solidColor_switch">Jednolity kolor</string>
     <string name="wave_switch">Fala</string>
-    <string name="flashing_switch">Miganie</string>
+    <string name="flashing_switch">Migotanie</string>
     <string name="led_mode">Tryb</string>
-    <string name="home">Strona startowa</string>
+    <string name="home">Strona Startowa</string>
     <string name="change_ip">Zmień IP serwera</string>
     <string name="change_port">Zmień port serwera</string>
     <string name="default_port">10000</string>
@@ -17,4 +17,10 @@
     <string name="toolbar_title">Smart Room</string>
     <string name="select_language">Wybierz język</string>
     <string name="submit_button_text">Zatwierdź</string>
+    <string name="selected_color">Wybrany color</string>
+    <string name="dialog_title">Uwaga</string>
+    <string name="dialog_description">Chcesz zmienić ustawienia serwera? \n Może to spowodować rozłączenie telefonu z serwerem</string>
+    <string name="dialog_accept_text">TAK</string>
+    <string name="dialog_cancel_text">NIE</string>
+    <string name="made_by_text">Made by Łukasz Witkowski</string>
 </resources>
