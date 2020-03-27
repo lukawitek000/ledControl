@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -41,7 +42,12 @@ class SettingsFragment : Fragment(){
            if(Paper.book().read<String>("language") != "pl") {
                Paper.book().write("language", "pl")
                (activity as MainActivity).updateView(Paper.book().read<String>("language"))
-               Toast.makeText(activity, resources.getString(R.string.language_changed), Toast.LENGTH_SHORT).show()
+               val toast = Toast.makeText(activity, resources.getString(R.string.language_changed), Toast.LENGTH_SHORT)
+               val toastMessage : TextView = toast.view.findViewById(android.R.id.message)
+               toastMessage.setTextColor(Color.RED)
+               toast.view.setBackgroundColor(Color.BLACK)
+               toast.view.background = resources.getDrawable(R.drawable.toast_drawable)
+               toast.show()
            }
         }
 
