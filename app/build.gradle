@@ -50,8 +50,11 @@ dependencies {
     // Dynamic Feature Module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
-    implementation 'com.jakewharton:process-phoenix:2.0.0'
-    
+
+
+    //to changing language
+
+    implementation 'io.paperdb:paperdb:2.5'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LedControlling</string>
+    <string name="send_button">Send</string>
+    <string name="welcome_text">WELCOME!!!</string>
+    <string name="ledButton">LED</string>
+    <string name="Settings_name">Settings</string>
+    <string name="solidColor_switch">Solid Color</string>
+    <string name="wave_switch">Wave</string>
+    <string name="flashing_switch">Flashing</string>
+    <string name="led_mode">Mode</string>
+    <string name="home">Home</string>
+    <string name="change_ip">Change IP of the server</string>
+    <string name="change_port">Change port of the server</string>
+    <string name="default_port">10000</string>
+    <string name="default_IP">192.168.0.103</string>
+    <string name="toolbar_title">Smart Room</string>
+    <string name="select_language">Select language</string>
+    <string name="submit_button_text">Submit</string>
+    <string name="selected_color">Selected color</string>
+    <string name="dialog_title">Warning</string>
+    <string name="dialog_description">Do you want to change server settings? \n It can disconnect phone with server</string>
+    <string name="dialog_accept_text">YES</string>
+    <string name="dialog_cancel_text">NO</string>
+    <string name="made_by_text">Made by Łukasz Witkowski</string>
+</resources>
