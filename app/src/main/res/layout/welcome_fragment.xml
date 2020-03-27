@@ -25,7 +25,6 @@
             android:fontFamily="@font/welcome_font"
             android:text="@string/welcome_text"
             android:textColor="@color/welcome_textColor"
-
             android:textSize="@dimen/welcome_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
