@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LedControlling</string>
+    <string name="send_button">Wyślij</string>
+    <string name="welcome_text">WITAJ!!!</string>
+    <string name="ledButton">LED</string>
+    <string name="Settings_name">Ustawienia</string>
+    <string name="solidColor_switch">Stały kolor</string>
+    <string name="wave_switch">Fala</string>
+    <string name="flashing_switch">Miganie</string>
+    <string name="led_mode">Tryb</string>
+    <string name="home">Strona startowa</string>
+    <string name="change_ip">Zmień IP serwera</string>
+    <string name="change_port">Zmień port serwera</string>
+    <string name="default_port">10000</string>
+    <string name="default_IP">192.168.0.103</string>
+    <string name="toolbar_title">Smart Room</string>
+    <string name="select_language">Wybierz język</string>
+    <string name="submit_button_text">Zatwierdź</string>
+</resources>

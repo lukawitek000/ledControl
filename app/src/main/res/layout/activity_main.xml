@@ -22,6 +22,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="@drawable/crop"
+        app:itemTextColor="@color/red"
+        app:itemBackground="@drawable/menu_items"
+        app:itemIconTint="@color/red"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"/>
 
