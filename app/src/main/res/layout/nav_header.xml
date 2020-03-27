@@ -4,29 +4,16 @@
     android:layout_width="wrap_content"
     android:layout_height="200dp"
     android:background="@drawable/red_mask__red_tint"
-    android:gravity="bottom"
+    android:gravity="top"
     android:orientation="vertical"
-    android:paddingLeft="15dp"
-    android:paddingBottom="15dp">
-
-    <!--<ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imageView"
-        android:layout_marginBottom="15dp"/>-->
-    <!--
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp">
 
     <TextView
+        android:id="@+id/made_by_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is our navigation drawer"
-        android:textColor="#FFFFFF" />
--->
+        android:text="@string/made_by_text"
+        android:textColor="@color/dark_red"
+        android:textSize="8sp" />
 </LinearLayout>

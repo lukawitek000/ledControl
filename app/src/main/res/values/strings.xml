@@ -21,4 +21,5 @@
     <string name="dialog_description">Do you want to change server settings? \n It can disconnect phone with server</string>
     <string name="dialog_accept_text">YES</string>
     <string name="dialog_cancel_text">NO</string>
+    <string name="made_by_text">Made by Łukasz Witkowski</string>
 </resources>
