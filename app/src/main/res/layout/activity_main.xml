@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:background="@drawable/crop"
+        android:background="@drawable/drawer_menu_background"
         app:itemTextColor="@color/red"
         app:itemBackground="@drawable/menu_items"
         app:itemIconTint="@color/red"

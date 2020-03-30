@@ -5,7 +5,7 @@
     <string name="welcome_text">WELCOME!!!</string>
     <string name="ledButton">LED</string>
     <string name="Settings_name">Settings</string>
-    <string name="solidColor_switch">Solid Color</string>
+    <string name="solidColor_switch">Solid</string>
     <string name="wave_switch">Wave</string>
     <string name="flashing_switch">Flashing</string>
     <string name="led_mode">Mode</string>

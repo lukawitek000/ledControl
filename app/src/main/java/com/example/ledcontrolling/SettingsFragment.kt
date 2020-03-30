@@ -19,6 +19,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ledcontrolling.databinding.SettingsFragmentBinding
+import com.example.ledcontrolling.helper.CustomToast
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.settings_fragment.view.*
 import java.util.*
@@ -41,21 +42,18 @@ class SettingsFragment : Fragment(){
        binding.selectPolishButton.setOnClickListener{
            if(Paper.book().read<String>("language") != "pl") {
                Paper.book().write("language", "pl")
-               (activity as MainActivity).updateView(Paper.book().read<String>("language"))
-               val toast = Toast.makeText(activity, resources.getString(R.string.language_changed), Toast.LENGTH_SHORT)
-               val toastMessage : TextView = toast.view.findViewById(android.R.id.message)
-               toastMessage.setTextColor(Color.RED)
-               toast.view.setBackgroundColor(Color.BLACK)
-               toast.view.background = resources.getDrawable(R.drawable.toast_drawable)
-               toast.show()
+               (activity as MainActivity).updateView(Paper.book().read<String>("language"), false)
+               CustomToast.show(activity as MainActivity,
+                   resources.getString(R.string.language_changed), Toast.LENGTH_SHORT)
            }
         }
 
         binding.selectEnglishButton.setOnClickListener{
             if(Paper.book().read<String>("language") != "en"){
                 Paper.book().write("language", "en")
-                (activity as MainActivity).updateView(Paper.book().read<String>("language"))
-                Toast.makeText(activity, resources.getString(R.string.language_changed), Toast.LENGTH_SHORT).show()
+                (activity as MainActivity).updateView(Paper.book().read<String>("language"), false)
+                CustomToast.show(activity as MainActivity,
+                    resources.getString(R.string.language_changed), Toast.LENGTH_SHORT)
             }
         }
 
@@ -75,14 +73,16 @@ class SettingsFragment : Fragment(){
         okButton.setOnClickListener{
             ConnectTask.port = binding.inputPort.text.toString().toInt()
             ConnectTask.host = binding.inputIDaddress.text.toString()
-            Toast.makeText(activity, resources.getString(R.string.setting_changes), Toast.LENGTH_SHORT).show()
+            CustomToast.show(activity as MainActivity,
+                resources.getString(R.string.setting_changes), Toast.LENGTH_SHORT)
             dialog.dismiss()
         }
 
         cancelButton.setOnClickListener{
             binding.inputIDaddress.setText(ConnectTask.host)
             binding.inputPort.setText(ConnectTask.port.toString())
-            Toast.makeText(activity, resources.getString(R.string.cancel_text), Toast.LENGTH_SHORT).show()
+            CustomToast.show(activity as MainActivity,
+                resources.getString(R.string.cancel_text), Toast.LENGTH_SHORT)
             dialog.dismiss()
         }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

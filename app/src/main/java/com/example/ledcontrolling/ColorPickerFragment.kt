@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.ledcontrolling.databinding.ColorPickerFragmentBinding
+import com.example.ledcontrolling.helper.CustomToast
 
 class ColorPickerFragment : Fragment(), AsyncResponse{
 
@@ -32,7 +33,8 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
             var hex: String = Integer.toHexString(color).substring(2, 8)
             hex += selectMode()
             // s - solid color, w - wave, f - flashing, at the end of the hex
-            //Toast.makeText(activity, hex, Toast.LENGTH_SHORT).show()
+            /*CustomToast.show(activity as MainActivity,
+                hex, Toast.LENGTH_SHORT)*/
             //connect.execute(hex)
         }
         return binding.root
@@ -123,9 +125,11 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
 
     override fun processFinish(value: String?) {
         if(value == "error") {
-            Toast.makeText(activity, resources.getString(R.string.connection_failure), Toast.LENGTH_SHORT).show()
+            CustomToast.show(activity as MainActivity,
+                resources.getString(R.string.connection_failure), Toast.LENGTH_SHORT)
         }else{
-            Toast.makeText(activity, resources.getString(R.string.connection_successful), Toast.LENGTH_SHORT).show()
+            CustomToast.show(activity as MainActivity,
+                resources.getString(R.string.connection_successful), Toast.LENGTH_SHORT)
         }
     }
 }

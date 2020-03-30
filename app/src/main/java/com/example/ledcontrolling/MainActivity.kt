@@ -55,14 +55,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(language == null){
             Paper.book().write("language", "en")
         }
-        //updateView(Paper.book().read<String>("language"))
+        updateView(Paper.book().read<String>("language"), false)
 
         
     }
 
-    fun updateView(lang: String?) {
+    fun updateView(lang: String?, isItOnCreateCall: Boolean) {
         val context : Context? = LocaleHelper.setLocale(this, lang)
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && isItOnCreateCall) {
             recreate()
         }else {
         val resources: Resources = context!!.resources
