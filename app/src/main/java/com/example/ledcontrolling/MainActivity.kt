@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.example.ledcontrolling.helper.CustomToast
 import com.example.ledcontrolling.helper.LocaleHelper
 import com.google.android.material.navigation.NavigationView
 import io.paperdb.Paper
@@ -55,14 +56,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(language == null){
             Paper.book().write("language", "en")
         }
-        updateView(Paper.book().read<String>("language"), false)
+        //updateView(Paper.book().read<String>("language"), true)
 
         
     }
 
-    fun updateView(lang: String?, isItOnCreateCall: Boolean) {
+    fun updateView(lang: String?) {
         val context : Context? = LocaleHelper.setLocale(this, lang)
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && isItOnCreateCall) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             recreate()
         }else {
         val resources: Resources = context!!.resources
@@ -73,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
         navController.navigate(R.id.welcomeFragment)
+        CustomToast.show(this, resources.getString(R.string.language_changed), Toast.LENGTH_SHORT)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

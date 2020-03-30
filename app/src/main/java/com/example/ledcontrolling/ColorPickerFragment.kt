@@ -35,7 +35,7 @@ class ColorPickerFragment : Fragment(), AsyncResponse{
             // s - solid color, w - wave, f - flashing, at the end of the hex
             /*CustomToast.show(activity as MainActivity,
                 hex, Toast.LENGTH_SHORT)*/
-            //connect.execute(hex)
+            connect.execute(hex)
         }
         return binding.root
     }

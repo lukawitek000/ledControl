@@ -42,18 +42,14 @@ class SettingsFragment : Fragment(){
        binding.selectPolishButton.setOnClickListener{
            if(Paper.book().read<String>("language") != "pl") {
                Paper.book().write("language", "pl")
-               (activity as MainActivity).updateView(Paper.book().read<String>("language"), false)
-               CustomToast.show(activity as MainActivity,
-                   resources.getString(R.string.language_changed), Toast.LENGTH_SHORT)
+               (activity as MainActivity).updateView(Paper.book().read<String>("language"))
            }
         }
 
         binding.selectEnglishButton.setOnClickListener{
             if(Paper.book().read<String>("language") != "en"){
                 Paper.book().write("language", "en")
-                (activity as MainActivity).updateView(Paper.book().read<String>("language"), false)
-                CustomToast.show(activity as MainActivity,
-                    resources.getString(R.string.language_changed), Toast.LENGTH_SHORT)
+                (activity as MainActivity).updateView(Paper.book().read<String>("language"))
             }
         }
 
