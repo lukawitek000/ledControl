@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -54,21 +55,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(language == null){
             Paper.book().write("language", "en")
         }
-        updateView(Paper.book().read<String>("language"))
+        //updateView(Paper.book().read<String>("language"))
 
         
     }
 
     fun updateView(lang: String?) {
         val context : Context? = LocaleHelper.setLocale(this, lang)
-        val resources : Resources = context!!.resources
-        navView.menu.apply {
-            findItem(R.id.nav_settings).title = resources.getString(R.string.Settings_name)
-            findItem(R.id.nav_home).title = resources.getString(R.string.home)
-            findItem(R.id.nav_color_fill).title = resources.getString(R.string.ledButton)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            recreate()
+        }else {
+        val resources: Resources = context!!.resources
+            navView.menu.apply {
+                findItem(R.id.nav_settings).title = resources.getString(R.string.Settings_name)
+                findItem(R.id.nav_home).title = resources.getString(R.string.home)
+                findItem(R.id.nav_color_fill).title = resources.getString(R.string.ledButton)
+            }
         }
         navController.navigate(R.id.welcomeFragment)
-
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

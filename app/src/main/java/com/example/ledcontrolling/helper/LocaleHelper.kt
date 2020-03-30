@@ -5,11 +5,13 @@ package com.example.ledcontrolling.helper
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.preference.PreferenceManager
+import android.util.Log
 import java.util.*
 
 class LocaleHelper {
@@ -26,7 +28,7 @@ class LocaleHelper {
 
         }
 
-        fun setLocale(context: Context?, lang: String?): Context? {
+        fun setLocale(context: Context?, lang: String?): ContextWrapper {
             persist(context, lang)
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
                 return updateResources(context, lang)
@@ -35,21 +37,22 @@ class LocaleHelper {
 
 
         @TargetApi(Build.VERSION_CODES.N)
-        private fun updateResources(context: Context?, lang: String?): Context {
+        private fun updateResources(context: Context?, lang: String?): ContextWrapper {
             val locale = Locale(lang!!)
             Locale.setDefault(locale)
 
             val config : Configuration = context!!.resources.configuration
             config.setLocale(locale)
-            config.setLayoutDirection(locale)
-            return context.createConfigurationContext(config)
+            //config.setLayoutDirection(locale)
+            Log.i("LocaleHelper", "heeeeeeeeereeeeeeee")
+            return ContextWrapper(context.createConfigurationContext(config))
 
         }
 
 
         @SuppressLint("ObsoleteSdkInt")
         @Suppress("DEPRECATION")
-        private fun updateResourcesLegacy(context: Context?, lang: String?): Context? {
+        private fun updateResourcesLegacy(context: Context?, lang: String?): ContextWrapper {
             val locale = Locale(lang!!)
             Locale.setDefault(locale)
 
@@ -62,7 +65,8 @@ class LocaleHelper {
                 config.setLayoutDirection(locale)
             }
             resources.updateConfiguration(config, resources.displayMetrics)
-            return context
+            Log.i("LocaleHelper", "older version")
+            return ContextWrapper(context)
 
         }
 
