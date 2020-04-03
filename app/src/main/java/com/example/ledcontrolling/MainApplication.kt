@@ -2,7 +2,7 @@ package com.example.ledcontrolling
 
 import android.app.Application
 import android.content.Context
-import com.example.ledcontrolling.Helper.LocaleHelper
+import com.example.ledcontrolling.helper.LocaleHelper
 
 class MainApplication : Application() {
 

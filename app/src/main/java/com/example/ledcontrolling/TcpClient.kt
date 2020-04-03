@@ -10,15 +10,16 @@ import java.nio.charset.Charset
 
 class TcpClient(private val address: InetAddress, private val port: Int) {
     private lateinit var socket: Socket
-    private val UTF8_CHARSET = Charset.forName("UTF-8")
+    private val  UTF8_CHARSET = Charset.forName("UTF-8")
 
     fun connect() {
-        // try {
-        socket = Socket(address, port)
-        //} catch (e: IOException) {
-        //  Log.i("TcpClient", "cannot create socket")
-        // throw e
-        //}
+         try {
+            socket = Socket(address, port)
+        } catch (e: IOException) {
+          Log.i("TcpClient", "cannot create socket")
+             e.printStackTrace()
+         throw e
+        }
     }
 
 
@@ -42,7 +43,6 @@ class TcpClient(private val address: InetAddress, private val port: Int) {
             var dataString = String(data, UTF8_CHARSET)
             Log.i("TcpClient", dataString)
         } catch (e: IOException) {
-            //e.printStackTrace()
             Log.i("TcpClient", "cannot read data from server")
             throw e
         }
@@ -53,6 +53,7 @@ class TcpClient(private val address: InetAddress, private val port: Int) {
             socket.close()
         } catch (e: IOException) {
             Log.i("TcpClient", "cannot close connection")
+            throw e
         }
     }
 

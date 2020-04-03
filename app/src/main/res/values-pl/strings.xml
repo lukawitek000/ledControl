@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LedControlling</string>
+    <string name="app_name">Ledziki</string>
     <string name="send_button">Wyślij</string>
     <string name="welcome_text">Witaj!!!</string>
     <string name="ledButton">LED</string>
     <string name="Settings_name">Ustawienia</string>
-    <string name="solidColor_switch">Jednolity kolor</string>
+    <string name="solidColor_switch">Jednolity</string>
     <string name="wave_switch">Fala</string>
     <string name="flashing_switch">Migotanie</string>
     <string name="led_mode">Tryb</string>
@@ -23,4 +23,9 @@
     <string name="dialog_accept_text">TAK</string>
     <string name="dialog_cancel_text">NIE</string>
     <string name="made_by_text">Made by Łukasz Witkowski</string>
+    <string name="cancel_text">Anulowane</string>
+    <string name="setting_changes">Ustawienia zmienione</string>
+    <string name="connection_failure">Nieudane połączenie</string>
+    <string name="connection_successful">Udane połączenie</string>
+    <string name="language_changed">Język zmieniony</string>
 </resources>

@@ -1,28 +1,34 @@
-package com.example.ledcontrolling.Helper
+@file:Suppress("DEPRECATION")
 
+package com.example.ledcontrolling.helper
+
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.preference.PreferenceManager
+import android.util.Log
 import java.util.*
 
 class LocaleHelper {
 
+    @Suppress("DEPRECATION")
     companion object{
-        private val SELECTED_LANGUAGE : String = "Locale.Helper.Selected.Language"
+        private const val SELECTED_LANGUAGE : String = "Locale.Helper.Selected.Language"
 
 
 
-        fun onAttach(context: Context?, defaultLanguage: String):Context? {
+        fun onAttach(context: Context?, defaultLanguage: String?):Context? {
             val lang : String? = getPersistedData(context, defaultLanguage)
             return setLocale(context, lang)
 
         }
 
-        fun setLocale(context: Context?, lang: String?): Context? {
+        fun setLocale(context: Context?, lang: String?): ContextWrapper {
             persist(context, lang)
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
                 return updateResources(context, lang)
@@ -31,21 +37,23 @@ class LocaleHelper {
 
 
         @TargetApi(Build.VERSION_CODES.N)
-        private fun updateResources(context: Context?, lang: String?): Context {
-            val locale:Locale = Locale(lang)
+        private fun updateResources(context: Context?, lang: String?): ContextWrapper {
+            val locale = Locale(lang!!)
             Locale.setDefault(locale)
 
             val config : Configuration = context!!.resources.configuration
             config.setLocale(locale)
-            config.setLayoutDirection(locale)
-            return context.createConfigurationContext(config)
+            //config.setLayoutDirection(locale)
+            Log.i("LocaleHelper", "heeeeeeeeereeeeeeee")
+            return ContextWrapper(context.createConfigurationContext(config))
 
         }
 
 
+        @SuppressLint("ObsoleteSdkInt")
         @Suppress("DEPRECATION")
-        private fun updateResourcesLegacy(context: Context?, lang: String?): Context? {
-            val locale:Locale = Locale(lang)
+        private fun updateResourcesLegacy(context: Context?, lang: String?): ContextWrapper {
+            val locale = Locale(lang!!)
             Locale.setDefault(locale)
 
             val resources : Resources = context!!.resources
@@ -57,7 +65,8 @@ class LocaleHelper {
                 config.setLayoutDirection(locale)
             }
             resources.updateConfiguration(config, resources.displayMetrics)
-            return context
+            Log.i("LocaleHelper", "older version")
+            return ContextWrapper(context)
 
         }
 
@@ -70,7 +79,7 @@ class LocaleHelper {
 
         }
 
-        private fun getPersistedData(context: Context?, language: String): String? {
+        private fun getPersistedData(context: Context?, language: String?): String? {
             val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
             return preferences.getString(SELECTED_LANGUAGE, language)
         }

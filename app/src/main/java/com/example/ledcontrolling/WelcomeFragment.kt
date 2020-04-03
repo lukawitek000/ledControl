@@ -32,10 +32,10 @@ class WelcomeFragment : Fragment(){
             binding.root.findNavController().navigate(R.id.action_welcomeFragment_to_settingsFragment)
         }
 
-        binding.welcomeTextView.setShadowLayer(20f, 0f, 0f, Color.RED)
-        binding.goToSettingsButton.setShadowLayer(10f, 2f, -2f, Color.rgb(241, 102, 52))
+        //binding.welcomeTextView.setShadowLayer(20f, 0f, 0f, Color.RED)
+       // binding.goToSettingsButton.setShadowLayer(10f, 2f, -2f, Color.rgb(241, 102, 52))
 
-        binding.goToLedButton.setShadowLayer(10f, 2f, -2f, Color.rgb(241, 102, 52))
+       // binding.goToLedButton.setShadowLayer(10f, 2f, -2f, Color.rgb(241, 102, 52))
 
 
         return binding.root

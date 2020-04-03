@@ -13,21 +13,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ledcontrolling.databinding.SettingsFragmentBinding
+import com.example.ledcontrolling.helper.CustomToast
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.settings_fragment.view.*
 import java.util.*
 
 class SettingsFragment : Fragment(){
-
-
     private lateinit var binding: SettingsFragmentBinding
-   // private lateinit var alertDialog: AlertDialog.Builder
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +33,6 @@ class SettingsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
-
 
         binding.submitButton.setOnClickListener{
             createAlertDialog()
@@ -56,8 +53,6 @@ class SettingsFragment : Fragment(){
             }
         }
 
-
-
         return binding.root
     }
 
@@ -74,14 +69,16 @@ class SettingsFragment : Fragment(){
         okButton.setOnClickListener{
             ConnectTask.port = binding.inputPort.text.toString().toInt()
             ConnectTask.host = binding.inputIDaddress.text.toString()
-            Toast.makeText(activity, "OK settings are changed", Toast.LENGTH_SHORT).show()
+            CustomToast.show(activity as MainActivity,
+                resources.getString(R.string.setting_changes), Toast.LENGTH_SHORT)
             dialog.dismiss()
         }
 
         cancelButton.setOnClickListener{
             binding.inputIDaddress.setText(ConnectTask.host)
             binding.inputPort.setText(ConnectTask.port.toString())
-            Toast.makeText(activity, "Cnacel", Toast.LENGTH_SHORT).show()
+            CustomToast.show(activity as MainActivity,
+                resources.getString(R.string.cancel_text), Toast.LENGTH_SHORT)
             dialog.dismiss()
         }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
