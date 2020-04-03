@@ -17,6 +17,7 @@ class TcpClient(private val address: InetAddress, private val port: Int) {
             socket = Socket(address, port)
         } catch (e: IOException) {
           Log.i("TcpClient", "cannot create socket")
+             e.printStackTrace()
          throw e
         }
     }
